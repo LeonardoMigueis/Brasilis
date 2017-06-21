@@ -1,7 +1,7 @@
 local alien_move = {}
 local alien_anim_frame = 1
-local alien_pos_x = 630
-local alien_pos_y = 370
+alien_pos_x = 630
+alien_pos_y = 370
 local alien_anim_time = 0
 local alien_dir= -1
 
@@ -13,6 +13,12 @@ cauda.x      = alien_pos_x
 cauda.y      = alien_pos_y
 cauda.anim_time = 1
 cauda.dir =  1
+
+local tiroAlien = {} 
+atirar = true
+delayTiro = 0.1
+timeAtirar = delayTiro
+imgTiroAlien = love.graphics.newImage( "tiro_alien.png" )
 
 function bulletSpawn(x,y)
   table.insert(enemy_bullets, {x=x, y=y})
@@ -65,6 +71,7 @@ alien_dir = dir / math.abs(dir)
  end
  for i=1, #enemy_bullets do
    --fazer a bullet andar
+   
  end
 end
 function alien_move.keyreleased(key)
