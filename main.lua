@@ -1,5 +1,6 @@
 local girl_walk  = require "girl"
 local alien      = require "alien"
+local enemy      = require "enemy"
  sucess = love.window.setMode(800, 600, {resizable = true})
           love.window.setTitle("Terra Brasilis")
           
@@ -7,6 +8,8 @@ function love.load()
   alien.load()
   
   girl_walk.load()
+  
+  enemy.load()
   
   imagem_Cloud = love.graphics.newImage ("mario_cloud.png")
   imagem_width = imagem_Cloud: getWidth()
@@ -23,6 +26,7 @@ end
 function love.update(dt)
 alien.update(dt, girl_pos_x, girl_pos_y)
 girl_walk.update(dt)
+enemy.update(dt)
 end
 function love.keyreleased(key)
  alien.keyreleased(key)
@@ -41,6 +45,8 @@ function love.draw()
  alien.draw()
  
  girl_walk.draw()
+ 
+ enemy.draw()
  
  love.graphics.draw (imagem_ground,0,487)
  love.graphics.draw (imagem_ground,220,487)

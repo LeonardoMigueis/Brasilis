@@ -17,7 +17,6 @@ bullet.dir =  1
 bullet.vel_y = 200
 
 tiros = {}
-tiro_dir = girl_dir
 atirar = true
 delayTiro = 0.1
 timeAtirar = delayTiro
@@ -104,13 +103,14 @@ if timeAtirar < 0 then
   atirar = true
 end 
 if love.keyboard.isDown("k") and atirar then
-   novoTiro = { x = girl_pos_x + 300, y = girl_pos_y + 180, img = imgTiro } 
+   novoTiro = { x = girl_pos_x + 50*girl_dir, y = girl_pos_y, img = imgTiro , dir = girl_dir} 
    table.insert( tiros, novoTiro)
    atirar = false 
    timeAtirar = delayTiro
  end
  for i, tiro in ipairs (tiros) do
-   tiro.x = tiro.x + (500*tiro_dir*dt) 
+   --tiro_dir = girl_dir
+   tiro.x = tiro.x + tiro.dir*(500*dt) 
    if tiro.x < 0 then
      table.remove(tiros, i)
    end 
@@ -143,8 +143,12 @@ function girl_walk.draw()
   
   -- Desenho do tiro
   for i, tiro in ipairs( tiros ) do 
-    love.graphics.draw( tiro.img, tiro.x , tiro.y , 0, 1*tiro_dir, 1, imgTiro:getWidth(), imgTiro:getHeight())
+    love.graphics.draw( tiro.img, tiro.x , tiro.y , 0, tiro.dir, 1, imgTiro:getWidth()/2, imgTiro:getHeight()/2)
   end 
+  love.graphics.setColor(255,0,0)
+  --love.graphics.rectangle('fill',girl_pos_x,girl_pos_y,150,150)
+  love.graphics.setColor(255,255,255)
+  
   -- Desenho do tiro
 end
   return girl_walk
