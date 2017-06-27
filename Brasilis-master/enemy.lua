@@ -1,5 +1,5 @@
 local enemy = {}
-enemy.delay = 2.5
+enemy.delay = 1
 enemy.SpawnTime = enemy.delay
 
 imgEnemy = {}
