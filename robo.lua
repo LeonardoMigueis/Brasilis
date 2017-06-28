@@ -13,11 +13,11 @@ function enemy.update(dt)
   enemy.SpawnTime = enemy.SpawnTime - (1*dt)
    if enemy.SpawnTime < 0 then
       enemy.SpawnTime = enemy.delay
-      newEnemy = { x= 800, y= 425, img = imgEnemy[x], frame = 1, timer = 0}
+      newEnemy = { x= -200, y= 425, img = imgEnemy[x], frame = 1, timer = 0}
       table.insert(enemy, newEnemy)
     end 
    for x, enemies in ipairs(enemy) do 
-     enemies.x = enemies.x - (200*dt)
+     enemies.x = enemies.x + (200*dt)
       if enemies.x < 0 then
         table.remove(enemy, x)
       else

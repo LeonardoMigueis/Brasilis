@@ -11,17 +11,19 @@ function love.load()
   
   enemy.load()
   
-  imagem_Cloud = love.graphics.newImage ("mario_cloud.png")
-  imagem_width = imagem_Cloud: getWidth()
+  imagem_Cloud  = love.graphics.newImage ("mario_cloud.png")
+  imagem_width  = imagem_Cloud: getWidth()
   imagem_height = imagem_Cloud : getHeight()
   
-  background = love.graphics.newImage("sao_paulo_background.png")
-  largura = background: getWidth()
-  altura  = background: getHeight()
+  background    = love.graphics.newImage("sao_paulo_background.png")
+  largura       = background: getWidth()
+  altura        = background: getHeight()
   
   imagem_ground = love.graphics.newImage ("ground.png")
-  imagem_width = imagem_ground: getWidth()
+  imagem_width  = imagem_ground: getWidth()
   imagem_height = imagem_ground : getHeight()
+  
+  fonte         = love.graphics.newImageFont("Fonte.png", " abcdefghijklmnopqrstuvwxyz" .. "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" .. "123456789.,!?-+/():;%&`'*#=[]\"")
 end 
 function love.update(dt)
 alien.update(dt, girl_pos_x, girl_pos_y)
@@ -32,17 +34,19 @@ function love.keyreleased(key)
  alien.keyreleased(key)
  girl_walk.keyreleased(key)
 end
-
-
-
-
 function love.draw()
  love.graphics.draw(background, 0, 00, 0,1.78,5)
 
  love.graphics.draw (imagem_Cloud,140,-50)
  love.graphics.draw (imagem_Cloud,490,-50)
  
- alien.draw()
+ --alien.draw()
+ 
+ love.graphics.setFont(fonte)
+ love.graphics.print("Pontuacao :", 10, 10, 0, 1, 1, 0, 2, 0, 0)
+ love.graphics.print(pontos, 140, 14, 0, scaleX, scaleY, 5, 5, 0, 0)
+ love.graphics.print("Vidas : ", 10, 40)
+ love.graphics.print(vidas, 95, 40)
  
  girl_walk.draw()
  
